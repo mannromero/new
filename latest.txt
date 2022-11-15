@@ -1,0 +1,66 @@
+//SETUP LARAVEL REACT WITH VITE
+>mkdir <Name>
+>cd <Name>
+>laravel new NewProject 
+>cd NewProject
+>php artisan --version
+//////laravel 9 breeze
+>composer require laravel/breeze --dev
+>php artisan breeze:install react
+>npm install
+>npm run dev
+>php artisan serve
+/////databse xampp
+>php artisan migrate:fresh
+
+//CREATE DATABASE MODEL MIGRATION,FACTORY,SEED
+>php artisan make:model Products -mfs
+
+//MIGRATION FILE
+            $table->id();
+            $table->string('name')->nullable();
+            $table->text('description')->nullable();
+            $table->string('photo')->nullable();
+            $table->string('type')->nullable();
+            $table->integer('quantity')->nullable();
+            $table->integer('price')->nullable();
+            $table->timestamps();
+>php artisan migrate
+----------------------------------------------------------
+//CONTROLLER
+try{
+$data = Data::all();
+return response()->json($data); //pass data using json
+}catch(Exception $e){
+Log::error($e);
+}
+
+//PROPS
+constructor(props){
+super(pros);
+this.state = {
+employees: [],
+}
+}
+//Life cycle method
+componentDidMount(){
+this.getDataList
+}
+//Get Data List
+getDataList = () => {
+let self = this;
+axios.get('/get/employee/list').then(function(response){
+self.setState({
+employees:response.data
+});
+});
+}
+//Mapping data
+{this.state.employees.map(function (x, i){
+return <TableRow key={i} data={x} />
+})}
+
+modal button table
+--------------------------------------------------
+inertia.js laravel react
+-ajax request to the server

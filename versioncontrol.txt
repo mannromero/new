@@ -1,0 +1,74 @@
+version control system
+who-when-what
+efficiency
+
+centralize vc => server - client 
+distributed vc = > every user is server not a client
+
+touch myfile.html - create a file called myfile.html 
+
+cd - Change Directory
+ls - List command used for showing the content of a directory.
+rm - Remove command used for removing a file or a directory
+mv - Used to move files or folders to another location
+touch - Allows creating of a new empty file or to upate a timestamp on a file
+cp - Used to make a copy of a file or foldler
+mkdir - Make a new directory
+pwd - Print work directory, shows the current location in the shell
+cat - Allows reading or concatenation of a file
+less -Displays the contents of a file one page at a time.
+grep - Global regular expression, allows for searching contents of files or folders
+
+ls -la | less .file | vim file | !/bin/bash 
+echo "hello world" | chmod 755 file.sh | ./file.sh
+
+pwd - to know file directory
+pwd | ls -l | cd ..
+mkdir - make new
+ls file1.txt |wc-w​  - pipes
+
+3types of redirection standard output|input|error
+
+grep match
+
+install github
+$ git version
+git version 2.34.1.windows.1
+
+mkdir directory| cd directory | git clone git.link | cd repo
+
+ls -la - all files
+------------------------------------------
+git workflow
+modified gitadd- staged gitcommit- committed gitpush - remote repository gitfetch|checkout
+
+ git status => to check changes
+ git diff => to check specific file change
+ git add file => to add
+ git restore --stage file => to unstage file
+
+  git checkout -B feature/lesson => create branch
+  git checkout main => to back to main
+  git branch -exist in isolation
+  git push -u origin feature/lesson
+  git pull
+
+local - remote
+  git mkdir repo| cd repo| git init |git remote|cd .. | git remote -v | => to create local repo 
+   git remote add origin https://github.com/mannromero/my-first-repo.git
+   cat test2.txt
+
+vim file => to edit
+
+git diff HEAD README.md
+git log --pretty=oneline
+git diff code
+git diff main <branch>
+
+git blame <file>
+git blame -L 5,15 <file>
+git log -p <commit_id>
+
+FORK
+
+git add --all

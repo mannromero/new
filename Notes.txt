@@ -1,0 +1,409 @@
+High- level programming language to convert low level like binary
+plain js/ Vanella js - Js Frameworks - Node js
+var - reuse
+
+7 datatypes in js 
+operators > assigment - logical
+
+else if and case
+for while nested
+array literal syntax
+object literal 
+key - value
+charAt() concat() indexOf() lastIndexOf() split() toUpperCase() toLowerCase()  
+typeOf()
+
+syntax , type , reference error
+try {}catch(err){}
+
+.match(/ss/)
+funtional programming - object-oriented programming
+recursive functions
+local scope - global scope
+use backtick to update variable inside function
+
+new Date();
+new Error();
+new Map();
+new Promise();
+new Set();
+new WeakSet();
+new WeakMap();
+
+prototype object - Object.create() - changevalue - console
+methods: Object.keys(), Object.values(), and Object.entries().
+for-of loop - only for object properties  => (var prop of dairy)-array || for (var prop of Object.keys(animal))-object
+for-in loop - prototype and object properties
+template literal
+
+object - array - maps - sets
+
+Template literals 
+
+Arrow functions 
+
+Spread syntax 
+
+Rest parameters 
+
+JavaScript data structures  
+array
+array methods => forEach = filter = map
+
+map 
+let bestBoxers = new Map(); bestBoxers.set(1, "The Champion"); console.log(bestBoxers.get(1));
+
+set = easy to filter unique member in array
+const repetitiveFruits = ['apple','pear','apple','pear','plum', 'apple'];
+const uniqueFruits = new Set(repetitiveFruits);
+console.log(uniqueFruits);
+
+spread operator - use to unpacked an array -- var top3 =  [top1, top2, top3]; =  var opeSpread = [... top3]
+rest operator - 
+join array
+const fruits = ['apple', 'pear', 'plum']
+const berries = ['blueberry', 'strawberry']
+const fruitsAndBerries = [...fruits, ...berries] // concatenate
+console.log(fruitsAndBerries);
+
+add array
+let veggies = ['onion', 'parsley'];
+veggies = [...veggies, 'carrot', 'beetroot'];
+console.log(veggies);
+
+join object
+const flying = { wings: 2 }
+const car = { wheels: 4 }
+const flyingCar = {...flying, ...car}
+console.log(flyingCar) 
+
+copy an object into a completely separate object, using the spread operator.
+const car1 = {
+    speed: 200,
+    color: 'yellow'
+}
+const car 2 = {...car1}
+car1.speed = 201
+console.log(car1.speed, car2.speed)
+
+DOM - tv remote
+--------------------------------
+var longString = "";
+longString += "Once";
+longString += " upon";
+longString += " a";
+longString += " time";
+longString += "...";
+console.log(longString); // "Once upon a time..."
+
+var day = `Sunday`;
+switch(day) {
+   case 'Monday':
+       console.log('Read a book');
+       break;
+   case 'Tuesday':
+       console.log('Watch a movie');
+       break;
+   case 'Wednesday':
+       console.log('Read a book');
+       break;
+   case 'Thursday':
+       console.log('Play basketball');
+       break;
+   case 'Friday':
+       console.log('Socialize');
+       break;
+   case 'Saturday':
+       console.log('Chill');
+       break;
+   case 'Sunday':
+       console.log('Have barbecue');
+       break;
+   default:
+       console.log('There is no such day');
+}
+
+
+var i = 1;
+while (i < 6) {
+    console.log(i);
+    i++;
+};
+console.log('Counting completed!');
+
+for (var i = 1; i <= 5; i++) {
+    console.log(i);
+};
+console.log('Counting completed!');
+
+for (var firstNum = 0; firstNum < 2; firstNum++) {
+    for (var secondNum = 0; secondNum < 10; secondNum++) {
+        console.log(firstNum + ", " + secondNum);
+    }
+}
+
+for(var i = 1; i <= 10; i++){
+    if( i == 1){   
+        console.log("Gold medal");
+    } else if (i ==2){
+        console.log("Silver Medal");
+    }
+    else if(i ==3){
+        console.log("Broze Medal");
+    }
+    else{
+        console.log(i);
+    }
+}
+
+for (var i = 1; i <= 10; i++) {
+    switch(i) {
+        case 1:
+            console.log("Gold medal")
+            break
+        case 2:
+            console.log("Silver medal")
+            break
+        case 3:
+            console.log("Bronze medal")
+            break
+        default:
+            console.log(i)
+    }
+}
+
+function letterFinder(word, match) {
+    for(var i = 0; i < word.length; i++) {
+        if(word[i] == match) {
+            console.log('Found the', match, 'at', i)
+        } else {
+            console.log('---No match found at', i)
+        }
+    }
+}
+letterFinder("test", "t")
+
+function addTwoNums(a,b) {
+    try {
+        if(typeof(a) != 'number') {
+            throw new ReferenceError('the first argument is not a number')
+        } else if (typeof(b) != 'number') {
+            throw new ReferenceError('the second argument is not a number')
+        } else {
+            console.log(a + b)
+        }
+    } catch(err) {
+        console.log("Error!", err)
+    }
+}
+addTwoNums(5, "5")
+console.log("It still works")
+
+function letterFinder(word, match) {
+    var condition1 = typeof(word) == 'string' && word.length >= 2;
+    var condition2 = typeof(match) == 'string' && match.length == 1;
+    if(condition1 && condition2) {
+        for(var i = 0; i < word.length; i++) {
+            if(word[i] == match) {
+                console.log('Found the', match, 'at', i)
+            } else {
+                console.log('---No match found at', i)
+            }
+        }
+    } else {
+        console.log("Please pass correct arguments to the function")
+    }
+}
+letterFinder([],[])
+letterFinder("cat","c")
+
+
+
+function consoleStyler(color, background, fontSize, txt) {
+    var message = `%c` + txt;
+    var style = `color: ${color}`;
+    style += `background: ${background}`;
+    style += `font-size: ${fontSize}`;
+    console.log(message, style);
+}
+consoleStyler('#1d5c63', '#ede6db', '40px', 'Congrats!');
+// Task 2: Build another console log message generator
+function celebrateStyler(reason) {
+    var fontStyle = "color: tomato; font-size: 50px";
+    if (reason == "birthday") {
+        console.log(`%cHappy birthday`, fontStyle);
+    } else if (reason == "champions") {
+         console.log(`%cCongrats on the title!`, fontStyle);
+    } else {
+        console.log(message, style);
+    }  
+}
+celebrateStyler('birthday');
+// Task 3: Run both the consoleStyler and the celebrateStyler functions
+// Task 4: Insert a congratulatory and custom message
+function styleAndCelebrate(color, background, fontSize, txt,reason) {
+    consoleStyler(color, background, fontSize, txt);  
+    celebrateStyler(reason);
+}
+// Call styleAndCelebrate
+styleAndCelebrate('ef7c8e', 'fae8e0', '30px', 'You made it!', 'champions');
+
+
+const fruits = ['kiwi','mango','apple','pear'];
+function appendIndex(fruit, index) {
+    console.log(`${index}. ${fruit}`)
+}
+fruits.forEach(appendIndex);
+
+const nums = [0,10,20,30,40,50];
+nums.filter( function(num) {
+    return num > 20;
+})
+
+[0,10,20,30,40,50].map( function(num) {
+    return num / 10
+})
+
+const result = [];
+const drone = {
+    speed: 100,
+    color: 'yellow'
+}
+const droneKeys = Object.keys(drone);
+droneKeys.forEach( function(key) {
+    result.push(key, drone[key])
+})
+console.log(result)
+-------------------------------------------------
+// Given variables
+const dishData = [
+    {
+        name: "Italian pasta",
+        price: 9.55
+    },
+    {
+        name: "Rice with veggies",
+        price: 8.65
+    },
+    {
+        name: "Chicken with potatoes",
+        price: 15.55
+    },
+    {
+        name: "Vegetarian Pizza",
+        price: 6.45
+    },
+]
+const tax = 1.20;
+
+// Implement getPrices()
+function getPrices(taxBoolean) {
+    for (var dish of dishData) {
+        var finalPrice;
+        if (taxBoolean == true) {
+            finalPrice = tax * dish.price;
+        }
+        else if (taxBoolean == false) {
+            finalPrice = dish.price;
+        }
+        else {
+            console.log("You need to pass a boolean to the getPrices call!");
+            return;
+        }
+        console.log(`Dish: ${dish.name} Price: $${finalPrice}\n`);
+    }
+}
+
+
+
+// Implement getDiscount()
+function getDiscount(taxBoolean, guests) {
+    getPrices(taxBoolean);
+
+    var conditions = typeof (guests) == 'number' && guests > 0 && guests < 30;
+    
+    if (conditions == true) {
+        var discount = 0;
+        if (guests < 5) {
+            discount = 5;
+        }
+        else if (guests >= 5) {
+            discount = 10;
+        }
+        console.log(`Discount is: $${discount}\n`);
+    }
+    else {
+        console.log("The second argument must be a number between 0 and 30\n");
+    }
+}
+
+// Call getDiscount()
+
+getDiscount(true, 2);
+getDiscount(false, 10);
+
+-------------------------------------------
+const h2 = document.createElement('h2');
+h2.innerText = "Manuel";
+h2.setAttribute('id', 'man1');
+h2.setAttribute('class', 'man2');
+h2
+document.body.appendChild(h2); to visualize
+-------------------------------------------
+JAVASCRIPT SELECTOR
+document.querySelector('p');
+document.querySelectorAll('p');
+document.getElementById('p');
+document.getElementByClassName('p');
+-----------------------------------------
+add event listener
+const target = document.querySelector('body');
+function handleClick() {
+    console.log("Clicked)
+}
+target.addEventListener('click', handleClick)
+
+onclick="handleClick"
+-------------------------------------
+JSON convert to object
+const jsonStr = '{"greetings":"hello"}';
+JSON.parse(jsonStr);
+const objPlain = JSON.parse(jsonStr)
+objPlain.greetings = 'hi';
+objPlain
+
+object convert to JSON
+const data = {
+    firstname: 'Man',
+    lastname: 'ban',
+} 
+JSON.stringify(data)
+---------------------------------------
+JEST testing
+expect(concatStrings("123", "456")).toBe("123456");
+
+red-green refactor
+
+e2e - Integration - unit testing
+---------------------------------------
+Jest testing
+babel - typeScript - node - angular - vue
+mocking
+snapchats
+
+
+module.exports = function;
+npm init -y
+npm install --save-dev jest
+npm run test
+
+test.js file 
+const {default: TestRunner} = require("jest-runner");
+const addFive = require('./addFive');
+
+test('returns the number plus 5', ()=> {
+    expect(addFive(1).toBe(6);
+})
+red green refactor
+------------------------------------------------
+tdd - test-driven Development

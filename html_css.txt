@@ -1,0 +1,135 @@
+user input - form
+media element
+lay out - grids- flex-boxes
+selectors
+effects - aniation- keyframes
+testing - debuging
+
+html tags - navigation links - article element
+
+semantic tags
+article -header - h1|p
+        -main - section - h3|p
+
+Header img- Nav ullia- Main h1articlep- Footer p
+
+meta tags - unseen element within a browser
+ attributes => name = "name"- content = "value"
+        
+Open Graph Protocol
+ <meta name="" content><meta property"og:title|type|url|image|description|locale|site_name" content>
+
+ forms and validation
+ client side validation - serverside validation
+ <form method="post"><>
+<label for="id"><> <input type="email|tel|url|date|time|number|range|color|checkbox|radio" id="" name="" required max|minlenght = "3">
+<fieldse id=""><input type="radio" value"" name"" checked><>
+
+form action= "/directory" method= "POST is most secure than GET   
+HTTPS  is secured
+input:focus:invalid{}
+
+<video width hight controls muted ><audio controls loop><><source src="vid.mp4" type=video/mp4"">
+<iFrame src="placeholder.png" sandbox allow="payment 'none';camera 'none'; microphone 'none';"><> - be cautious using iframe
+
+
+webGL - 2d/3d animation
+use GPU
+
+Y vert-column -up down
+X hor-row - LR side
+display = block, inline, flex ,inline-flex, grid
+justify-content = center, stretch, space-between - etc..
+flex - flex-basis - flex-grow - flex-shrink 
+grid = gutter- gridcell
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items:flex-end;
+    gap: "10" - space
+    flex: 0 1 auto;
+
+    align-self: center; - align specific element
+    flex: 1 1 auto;
+
+    display: grid;
+    grid-template-coloums: repeat(3, 100px);
+    grid-auto-rows: minmax(150px, auto);
+    grid-gap: 10px;
+    background-color: white;
+
+    selector ~>+ - pseudo 24:- syntax 5::
+
+    transition - transform
+    hover- transform: rotateZ(60%) - transition: 2s;
+
+    .letters:hover p:nth-child(even) {
+  transform: rotateY(360deg);
+  transition: 0.5s;
+}
+
+.letters:hover p:nth-child(odd) {
+  transform: rotateX(360deg);
+  transition: 1.5s;
+}
+
+animation - @keyframe rule
+animation = > name duration timing-function delay iteration-count direction fill-mode play-state
+keyframe => from-to 0%-100%{}
+
+transform: 11 rotate(), scale() and translate()
+
+preprocessors => sass, scss, Stylus
+SCSS & SASS
+      $font-stack: Arial; 
+      $primary-color: lightblue; 
+      body { 
+        font: 100% $font-stack; 
+        color: $primary-color; 
+      } 
+SASS
+      @mixin some-rules { 
+          color: lightblue; 
+          font-size: 25px; 
+          font-weight: bold; 
+      }
+      div { 
+          @include some-rules; 
+      } 
+
+skill - rule - knowledge
+.stylelintrc.json -file to check
+stylelin vscode extension
+
+UI testing => 
+    cross-device - layout and behavior
+
+  body marginLR 5%, marginTB 3rem fontfam bgcolor
+  header => display: block; margin:left;margin:right; - center the specific element horizontally
+  nav  => ul => listyle,textalign
+  li => diplay inline-block
+  main => section display flex | article flex 1
+    footer => footer display flex | foot div flex 1
+
+Stakeholder interviews - User research - UX audit and scenario mapping
+
+color themes
+·       Monochromatic  
+
+·       Analogous  
+
+·       Complementary  
+
+·       Split complimentary  
+
+·       Triadic   
+
+·       Square and   
+
+·       Rectangle  

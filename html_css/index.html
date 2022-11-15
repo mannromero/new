@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Little Lemon</title>
+
+        <meta property="og:title" content="Our Menu">
+        <meta property="og:type"  content="website">
+        <meta property="og:image" content="logo.png">
+        <meta property="og:url"   content="https://littlelemon/">
+        <meta property="og:description" content="Little Lemon is a family-owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.">
+        <meta property="og:locale" content="en_US">
+        <meta property="og:site_name" content="Little Lemon">
+      
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header>
+            <img src="logo.png">
+        </header>
+        <nav>
+            <ul class="navContainer">
+                <li><a href="#">One</a></li>
+                <li><a href="#">Two</a></li>
+                <li><a href="#">Three</a></li>
+                <li><a href="#">Four</a></li>
+                <li><a href="#">Five</a></li>
+            </li>
+        </nav>
+        <main>
+            <div class="container">
+                <header class="header"> Header </header>
+                <main class="main"> Content </main>
+                <div class="sidebar left"> Sidebar </div>
+                <div class="sidebar right"> Sidebar </div>
+                <footer class="footer"> Footer </footer>
+            </div>
+            <h1>Sign Up</h1>
+            <form>
+                <div>
+                    <label for="firstname">First Name</label><br>
+                    <input type="text" id="firstname" name="firstname" required>
+                </div>
+                <div>
+                    <label for="lastname">Last Name</label><br>
+                    <input type="text" id="lastname" name="lastname" required>
+                </div>
+                <div>
+                    <label for="email">Email Address</label><br>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div>
+                    <label for="password">Password</label><br>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div>
+                    <label for="confirm_password">Confirm Password</label><br>
+                    <input type="password" id="confirm_password" name="confirm_password" required>
+                </div>
+                <div>
+                    <label for="date">Booking Date</label><br>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div>
+                    <label for="range">People Count</label><br>
+                    <input type="range" id="range" value="4" name="range" min="1" max="5"  required oninput="this.nextElementSibling.value = this.value">
+                    <output>4</output>
+                </div>
+                <div>
+                    <label for="flowers">Favourite flower:</label><br> 
+                    <input list="flowers" name="flowers"> 
+                    <datalist id="flowers"> 
+                      <option value="Rose"> 
+                      <option value="Lily"> 
+                      <option value="Tulip"> 
+                      <option value="Daffodil"> 
+                      <option value="Orchid"> 
+                    </datalist> 
+                </div>
+                <div>
+                    <label for="course">Choose a course:</label><br> 
+                    <select id="course" name="courselist"> 
+                      <option value="html">HTML Introduction</option> 
+                      <option value="css">Styling with CSS</option> 
+                      <option value="js">JavaScript</option> 
+                      <option value="react">React Basics</option> 
+                    </select> 
+                </div>
+                <fieldset id="dark">
+                    <legend>Qualificaiton</legend> 
+                    <input type="radio" value="2" name="dark" checked>Comfort Room
+                    <input type="radio" value="2" name="dark">Dark Room
+                    <input type="radio" value="2" name="dark">Pass 
+                </fieldset>
+                <fieldset id="light">
+                    <legend>Qualificaiton</legend>
+                    <input type="radio" value="2" name="light" checked>Sofa 
+                    <input type="radio" value="2" name="light">Bedroom    
+                    <input type="radio" value="2" name="light">Pass  
+                </fieldset>
+                <div>
+                    <label>
+                        <input type="checkbox" id="agree" name="agree" required> 
+                        I agree to the cancellation policy
+                    </label>
+                </div>
+
+                <div>
+                    <button type="submit">Sign Up</button>
+                </div>
+
+                <figure> 
+                    <img src="logo.png" width="320" alt="My Profile Photo"> 
+                    <figcaption>A photo of myself on a beach in 2015</figcaption> 
+                 </figure>
+
+        <video controls width="320" height="240">
+            <source src="video.mp4" type="video/mp4">
+        </video>
+          <div>
+            <label for="rating">Rating</label>
+            <input type="range" min="1" max="5" id="rating" name="rating" list="ratings">
+            <datalist id="ratings">
+                <option value="1" label="1"></option>
+                <option value="2"></option>
+                <option value="3"></option>
+                <option value="4"></option>
+                <option value="5" label="5"></option>
+            </datalist>
+          </div>
+          <button type="submit">Submit Rating</button>
+          <div>
+          <canvas width="600" height="480" id="my_canvas">
+        </canvas>
+    </div>
+
+        </form>
+
+        <div class="containerSearch">
+            <img class="searchImg" src="logo.png" alt="Sample Image" style="width: 24px; height: 24px">
+            <input class="searchBox" type="search" id="search" name="search" placeholder="Search here...">
+            <input class="button" type="submit" value="Search">
+        </div>
+
+        <div class="ll"> Little Lemon </div>
+        <div class="menu"> Menu </div>
+        <div class="menu-container">
+        
+            <!-- Section starts: Tacos -->
+            <div class="section">
+                
+                <h3 class="meal-type">Tacos</h2>
+                    <!-- Item Starts -->
+                    <div class="item-name">
+                        
+                        <div class="label">Carne Asada</div>
+                        <b class="low">$10</b>
+                        <div class="description"> Un taco bien perron y sabroso.</div>
+                    </div>
+    
+                    <div class="item-name">
+                        <div class="label">Al Pastor</div>
+                        <b>$10</b>
+                        <div class="description"> Un taco bien perron y sabroso.</div>
+                    </div>
+    
+                    <div class="item-name">
+                        <div class="label">Cabeza</div>
+                        <b class="low">$10</b>
+                        <div class="description">Un taco bien perron y sabroso.</div>
+                    </div>
+    
+                    <div class="item-name">
+                        <div class="label">Lengua</div>
+                        <b>$10</b>
+                        <div class="description">Un taco bien perron y sabroso.</div>
+                    </div>
+                    <!-- Item Ends -->
+    
+            </div>
+            <!-- Section ends: Tacos -->
+    
+            <!-- Section starts: Burritos -->
+            <div class="section">
+                <h3 class="meal-type">Burritos</h2>
+                    <!-- Item Starts -->
+                    <div class="item-name">
+                        <div class="label">Chicken</div>
+                        <b>$12</b>
+                        <div class="description"> Un burrito bien perron y sabroso.</div>
+                    </div>
+    
+                    <div class="item-name">
+                        <div class="label">Bean and Cheese</div>
+                        <b>$12</b>
+                        <div class="description">Un burrito bien perron y sabroso.</div>
+                    </div>
+    
+                    <div class="item-name">
+                        <div class="label">Veggie</div>
+                        <b>$12</b>
+                        <div class="description">Un burrito bien perron y sabroso.</div>
+                    </div>
+                    <!-- Item Ends -->
+    
+            </div>
+            <!-- Section ends: Tacos -->
+    
+        </div>
+        </main>
+        <footer>
+            <p>Copyright by Manuel</p>
+        </footer>
+    
+        <script src="animation.js"></script>
+    </body>
+</html>

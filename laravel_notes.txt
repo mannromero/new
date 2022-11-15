@@ -1,0 +1,379 @@
+import initializeApp
+copy the firebaseConfig object from firebase
+create 
+
+xampp
+install - folde codeIgniter
+build project
+
+php -v
+
+htdocs shift+ right click
+
+> composer create-project codeigniter4/appstarter project-root
+
+apche> config 
+
+.env > 
+
+php spark serve
+
+ajax cdn
+view - controller
+datatables bootstrap 5 - copy the two links
+create database
+
+php spark make:model datas
+
+model > Datas > allowfields ''
+
+add.php file > bootstrap for
+======================================
+
+        <?php if(session()->get('success')): ?>
+            <div class="alert alert-success mt-2">
+            <?= session()->get('success') ?>
+            </div>
+            <?php endif; ?>
+
+            <?php foreach ($data as $emp): ?>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td><?= $emp['emp_code'] ?></td>
+                     <a href="/delete/"<?=  $emp['emp_code'] ?> class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+
+<?php
+
+namespace App\Controllers;
+
+use App\Controllers\BaseController;
+use App\Models\Datas;
+class Datass extends BaseController
+{
+    protected $helpers = ['url','form','text','html'];
+    public function index()
+    {
+        $emp = new Datas();
+        $arr['data'] = $emp->findAll();
+        return view('data', $arr);
+    }
+    public function add(){
+        return view('add');
+    }
+    public function addEmployee(){
+        $emp = new Datas();
+        $empInsert = array(
+            'checkbox' => $this->request->getPost('checkbox'),
+            'emp_code' => $this->request->getPost('emp_code'),
+            'emp_name' => $this->request->getPost('emp_name'),
+            'department' => $this->request->getPost('department'),
+            'position' => $this->request->getPost('position'),
+            'hired' => $this->request->getPost('hired'),
+            'status' => $this->request->getPost('status'),
+            'action' => $this->request->getPost('action')
+        );
+        $emp ->insert($empInsert);
+        echo "Successfully Added New User";
+        return redirect()->to('/')->with('success', 'New User Added');
+    }
+    public function ditEmp($emp_code = null){
+        $emp = new Datas();
+        $arr['data'] = $emp->find($emp_code);
+        return view('dit', $arr);
+    }
+}
+
+==================================================================
+LARAVEL
+>composer create-project laravel/laravel example-app
+>php artisan serve
+>composer install > composer update
+..app>Http>Controllers - routing
+..app>Models - databases
+..routes - api - channels - console - web 
+..boostrap - for core code or classes
+..config -
+..database
+..routs>web..resources>view
+..vendor>packages for laravel ..composer.json
+
+Route::redirect, permanentRedirect
+Route::get-,delete-,any-,match(['get' ,'post'],'/', funct),options -,post - ,put - edit/update, patch - change small portion of data,
+
+R::get./.f.Request $request, | response
+/user/{$id} func($id)
+/request-json/ func reponse()->json(['name' => 'data','id' => '1'])
+Route::get('request-download', function(){
+   $path = public_path().'/sample.txt';
+   $name = 'sample.txt';
+   $headers =array('Content-type: application/text-plain'),;
+   return response()->download($path,$name,$headers);
+});
+
+>php artisan route:list
+
+route:>http:controller>model>cofig:database|.env
+database:migration
+
+php.ini extension=pdo_mysql | extension=intl
+
+>php artisan migrate:refresh --seed
+>php artisan make:model Students
+>php artisan make:controller StudentController
+>php artisan make:migration student_table --table=students
+
+web >Route::get('/', [App\Http\Controllers\StudentController::class, 'index']);
+
+----------------------------
+to display array
+@php
+    print_r($students);
+@endphp 
+----------------------------
+@foreach ($students as $student)
+    {{$student->first_name}} or {{$student['first_name']}}
+@endforeach
+------------------------------
+DATABASE SQL
+$data = Database::all(); - to call all data
+$data = Database::where('id', 1)->get(); - to call specific data
+$data = Database::where('first_name', 'like', '%bert%')->get();
+$data = Database::where('age', '>', '19')->get();
+$data = Database::where('age', '>', '19')->orderBy('first_name', 'asc')->get();
+$data = Students::where('age', '>', '19')->orderBy('first_name', 'desc')->limit(5)->get();
+$data = Database::where('id', 101)->firstOrFail->get();
+$data = DB::table('students')
+      ->select(DB::raw)('count(*) as gender_count, gender
+      '))->groupBy('gender')->get();
+{{ $student->gender}} {{ $student->gender_count}}
+ return view('students.index', ['students' => $data])
+--------------------------------------------------
+toget 10 latest data
+$data = array("students" => DB::table('students')->orderBy('created_at', 'desc')->simplePaginate(10));
+return view('students.index', $data);
+
+below table
+ {{$students->links()}}
+--------------------------------------------------
+Route::get('/student/{id}', [StudentController::class, 'show']);
+pub func show($id){
+   $data = Students::findOrFail($id);
+   dd($data);
+}
+------------------------------
+TAILWIND CSS
+Install Tailwind CSS with Laravel
+>composer global require laravel/installer
+>laravel new laravel-vite
+>npm install -D tailwindcss postcss autoprefixer
+> npx tailwindcss init -p
+> npm run build
+------------------------------
+VIEW
+partials.header |footer
+@include('partials.header' , ['title' => 'Student System'])
+
+------------------------------
+Common routes naming
+index, show, create, store, edit, update, destroy
+------------------------------
+Facades
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\DB;
+------------------------------
+    public function login(){
+        if(View::exists('user.login')){
+            return view('user.login');
+        }else{
+            return abort(404);
+        }
+    }
+-----------------------------
+appserviceprovider
+  -boot => for all
+View::share('title','Student Admin');
+  View::composer('students.index',function($view){
+    $view->with('students', Students::all());
+  });
+-----------------------------
+https://fonts.google.com/
+-----------------------------
+Alpine.js
+https://alpinejs.dev
+-----------------------------
+components
+start with x
+-----------------------------
+POST
+form - method'post' - action'/store' - @csrf
+use Illuminate\Validation\Rule;
+--------
+Login
+    public function login(){
+        if(View::exists('users.login')){
+            return view('users.login');
+        }else{
+            return abort(404);
+        }
+    }
+Register
+    public function register(){
+        if(View::exists('users.register')){
+            return view('users.register');
+        }else{
+            return abort(404);
+        }
+    }
+Store post
+    public function store(Request $request){
+        $valid = $request->validate([
+            'name'=>['required','min:4'],
+            'email'=>['required','email',Rule::unique('users','email')],
+            'password'=>'required|confirmed|min:5|max:30'
+        ]);
+        $valid['password'] = bcrypt($valid['password']);
+        $user = User::create($valid);
+       // dd($user);
+      //  echo "Data send Successfully";
+      auth()->login($user);
+    }
+---------
+Logout post
+    public function logout(Request $request){
+        auth()->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/')->with('message', 'Logout successful');
+    }
+
+Alert component
+@if(session()->has('message'))
+<div x-data="{show:true}" x-show="show" x-init="setTimeout(()=>show=false,5000)" class="bg-teal-100 fixed bottom-0 z-20 right-0 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
+    <div class="flex">
+      <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
+      <div>
+        <p class="font-bold">Alert Message</p>
+        <p class="text-sm">{{session('message')}}</p>
+      </div>
+    </div>
+  </div>
+@endif
+----------
+process logins post
+    public function process(Request $request){
+        $valid = $request->validate([
+            'email'=>'required','email',
+            'password'=>'required'
+        ]);
+        if(auth()->attempt($valid)){
+            $request->session()->regenerate();
+
+            return redirect('/')->with('message', 'Welcome back!');
+        }
+        return back()->withErrors(['email'=>'login failed'])->onlyInput('email');
+    }
+-------------------------------------------
+Protect URL
+Route::get('/', [StudentController::class, 'index'])->middleware('auth');
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
+-------------------------------------------
+Error
+            @error('name')
+            <p class='text-red-500 text-xs mt-2'>
+               {{$message}}
+            </p>
+            @enderror
+            @error('password_confirmation')
+            <p class='text-red-500 text-xs mt-2'>
+               {{$message}}
+            </p>
+            @enderror  
+
+supply old
+            value={{old("name")}} 
+------------------------------------------------
+@auth
+@else
+@endauth
+------------------------------------------------
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\View;
+------------------------------------------------
+head
+{{$title !== "" ? $title : 'Student System'}}
+
+model
+    protected $guarded = []; //editable
+   // protected $fillable = ['first_name' , 'last_name', etc...]; specific
+
+below table
+ {{$students->links()}}
+
+--------------------------------------------------
+Show route && edit file
+Route::get('/student/{id}', [StudentController::class, 'show']);
+<a href='/student/{{$student->id}}' class="bg-sky-600 text-white px-4 py-2 rounded">view</a>
+    public function show($id){
+        $data = Students::findOrFail($id);
+       // dd($data);
+       return view('students.edit',  ['student'=>$data]);
+    }
+value={{$student->first_name}}
+{{$student->gender == "" ? 'selected' : ''}}
+
+
+update method
+Route::put('/student/{student}', [StudentController::class, 'update']);
+    public function update(Request $request, Students $student){
+        //dd($request);
+        $valid = $request->validate([
+            'first_name'=>['required','min:4'],
+            'last_name'=>['required','min:4'],
+            'gender'=>['required'],
+            'age'=>['required'],
+            'email'=>['required','email'],
+            ]);
+          $student->update($valid);
+          return back()->with('message', 'Data was successfully updated');
+    }
+action='/student/{{$student->id}}' method="POST"
+@method('PUT')
+---------------------------------------------------
+delete method
+Route::delete('/student/{student}', [StudentController::class, 'destroy']);
+    public function destroy(Students $student){
+             $student->delete();
+             return redirect('/')->with('message', 'Data was successfully deleted');
+
+    }
+      @method('delete')
+     @csrf
+action='/student/{{$student->id}}'
+---------------------------------------------------------
+Controller
+
+Route::controller(UserController::class)->group(function(){
+    Route::get('/login','login')->name('login')->middleware('guest');
+    Route::post('/login/process','process');
+    Route::get('/register','register');
+    Route::post('/store', 'store');
+    Route::post('/logout','logout');
+});
+
+Route::controller(StudentController::class)->group(function(){
+    Route::get('/','index')->middleware('auth');
+    Route::get('/add/student','create');
+    Route::post('/add/student','store');
+    Route::get('/student/{id}', 'show');
+    Route::put('/student/{student}', 'update');
+    Route::delete('/student/{student}','destroy');
+});

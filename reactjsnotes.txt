@@ -1,0 +1,271 @@
+Dynamic value jsx 
+         -style={{color:"white",}}
+Arrow Function
+         -const handleClick = ()=>{ cons.log("Hello");}
+Envoke 
+         - onClick={handleCLick()} X
+         - onClick={handleCLick} /
+Anonymous Function
+         - {()=>hancleCLick('mario')}  
+e.target 
+==============================================================
+reactive the value using hook useState 
+import {useState} from 'react';
+Use array destructuring
+         const [name, setName] = useState('mario'); [var,func]
+         const handleClick=()=>{
+         setName('luigi'); // this value is reactive and rerender value
+         }
+
+firefox - React Developer Tools
+============================================================
+map method
+const [blogs, setBlogs] = useState([
+{title: 'Mmsn', name: 'man', id: 1},
+{title: 'Mmsn', name: 'man', id: 2}
+]);
+{blogs.map((blog)=>(
+   key={blog.id}//must have key property and unique value
+   {blog.title}
+))}
+===========================================================
+props object way to pass data to components
+    parent
+         -const [blogs, setBlogs] = useState([
+          {title: 'Mmsn', name: 'man', id: 1},
+          {title: 'Mmsn', name: 'man', id: 2}
+         ]);
+         -<BlogList blogs={blogs} title ="All blogs"/>  
+    child
+         -({blogs,title}) // destructure props
+         -(props) 
+         - const blogs = props.blogs
+         - const title = props.title 
+         - <h2>{title}</h2>
+==============================================================
+Filtering callback_func boolean 
+         -<BlogList blogs={blogs.filter((blog)=> blog.author 
+           === 'mario')} title ="marios blog"/>
+=============================================================
+Detele must be in Parents
+    parent
+      - const handleDelete = (id){
+        const newBlogs = blogs.filter(blogs=> blog.id !== id);
+        setBlogs(newBlogs);
+       }
+      -<BlogList blogs={blogs} title="Blogs"handleDelete={handleDelete}/>
+    child 
+      -(handleDelete)
+===========================================================
+useEffect runs the function every render
+it first run the value
+  - usefull for fetching data
+  useEffect(()=>{
+   console.log('useeffect');
+   console.log(name);
+  }, [name]//dependencies array) // rrender if value change in that state
+=============================================================
+create data -> db.json
+>npx json-server --watch data/db.json --port 8000
+
+Endpoints
+ /blogs       get         fetch all blogs
+ /blogs/{id}  get         fetch a single blog
+ /blogs       post        add a new blog
+ /blogs/{id}  delete      delete a blog
+
+==============================================================
+useState and useEffect with JSON 
+ const [blogs,setBlogs] = useState(null);
+useEffect(()=>{
+  fetch('http://localhost:800/blogs') // promise
+  .then(res => { //response object
+    return res.json();
+ })
+  .then(data=>{ //get the data
+    setBlogs(data);
+   });
+}, []);
+
+if blogs is true its not evaluate anything to screen but
+it does move on to right side logical and evaluate
+   {blogs && <BlogList blogs={blogs} title="Blogs"handleDelete={handleDelete}/>}
+
+=================================================================
+Loading Message
+  const [isPending, setIsPending] = useState(true); 
+useEffect(()=>{
+ setTimeout(() => { //not good in real application
+  fetch('http://localhost:800/blogs') // promise
+  .then(res => { //response object
+     return res.json();
+ })
+  .then(data=>{ //get the data
+    setBlogs(data);
+    setIsPending(false);
+   });
+}, 1000);
+}, []);
+
+{isPending && <div>Loading...</div>}
+=============================================================
+Catch Error
+const [error, setError] = useState(null);
+useEffect(()=>{
+  fetch('http://localhost:800/blogs') // promise
+  .then(res => { //response object
+    if(!res.ok){
+      throw Error('Could not fetch');
+    }
+    return res.json();
+ })
+  .then(data=>{ //get the data
+    setBlogs(data);
+    setIsPending(false);
+    setError(null);
+   })
+   .catch(err => {
+    setError(err.message);
+    setIsPending(false);
+   });
+}, []);
+conditional rendiring
+  {error && <div>{error}</div>}
+===============================================================
+custom hooks must be started with word use "useEffect"
+import { useState, useEffect } from 'react';
+const useEffect = (url) =>{ //this is the endpoint
+ const [blogs,setBlogs] = useState(null);
+ const [isPending, setIsPending] = useState(true); 
+ const [error, setError] = useState(null);
+useEffect(()=>{
+  fetch(url) // promise
+  .then(res => { //response object
+    if(!res.ok){
+      throw Error('Could not fetch');
+    }
+    return res.json();
+ })
+  .then(data=>{ //get the data
+    setBlogs(data);
+    setIsPending(false);
+    setError(null);
+   })
+   .catch(err => {
+    setError(err.message);
+    setIsPending(false);
+   });
+}, [url]);
+
+return {blogs, isPending, error}
+}
+export default useFetch();
+
+import to home component
+    - const {data, isPending, Error} = useFetch('http:/lolca');
+        data: blogs //  to name it
+===============================================================
+Routes
+>npm install react-router-dom@5
+app 
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+<Router> 
+  <Switch>
+     <Route exact path="/">
+       <Home />
+     </Route>
+     <Route path="/create">
+       <Create />
+     </Route>
+  <Switch>
+</Router>
+
+To prevent request from server
+Nav
+import {Link} from 'ract-router-dom';
+     <Link href="/">Home</Link>
+     <Link href="/create">New Blog</Link>
+======================================================
+Cleaner Function and AbortController
+import { useState, useEffect } from 'react';
+const useEffect = (url) =>{ //this is the endpoint
+ const [blogs,setBlogs] = useState(null);
+ const [isPending, setIsPending] = useState(true); 
+ const [error, setError] = useState(null);
+useEffect(()=>{
+  const abortCont = new AbortController();
+  fetch(url,, {signal: abortCont.signal}) // promise
+  .then(res => { //response object
+    if(!res.ok){
+      throw Error('Could not fetch');
+    }
+    return res.json();
+ })
+  .then(data=>{ //get the data
+    setBlogs(data);
+    setIsPending(false);
+    setError(null);
+   })
+   .catch(err => {
+    if(err.name === 'AbortError'){
+    console.log('fetch abort')
+   }
+    else{
+    setError(err.message);
+    setIsPending(false);
+    }
+
+   });
+   return () => abortCont.abort(); // to abort fetch
+}, [url]);
+
+return {blogs, isPending, error}
+}
+export default useFetch();
+
+============================================================
+<Router>
+<Route path="/blog/:id"> // content
+<Link to={'/blogs/${blog.id}'}> // navigator
+import { useParams } from 'react'; to grab parameter id
+   const {id} = useParams();
+   const {data: blog, error, isPending} = useFetch('http:localhost' + id);
+   {blog && ()}
+
+==============================================================
+POST REQUEST
+import {useHistory} from react-router-dom
+const history = useHistory();
+ const [isPending, setPending] = useState(false);
+const [title, setTitle] = useState();
+const handleSubmit = (e){
+e.preventDefault();
+const blog = {title,body,author};
+fetch('http/',{ 
+  method: 'POST',
+  headers: {"Content-Type": "application/json"},
+  body: JSON.stringify(blog)
+}).then(()=>{
+console.log('added');
+setPending(false);
+history.push('/');
+});
+}
+form  - onSubmit={handleSubmit} 
+input - type='text' required value={title} 
+      - onChange{(e) = > setTitle(e.target.value)}
+textarea - blog
+select -> option
+=============================================================
+DELETE REQUEST
+const history = useHistory();
+const handleClick=()=>{
+fetch('http' +blog.id,{
+method: 'DELETE',
+}).then(()=>{
+  history.push('/');
+})
+}
+=============================================================
+Not Found Component
+<Route path="*"><NotFound />

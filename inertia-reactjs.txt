@@ -1,0 +1,15 @@
+import React, { useState } from 'react'
+import { useForm } from '@inertiajs/inertia-react'
+
+conts { data, setData, post, processing, errors} = useForm({
+companyName:'',
+name:'',
+})
+const onSubmitHandler = (e)=> {
+   e.preventDefault()
+   console.log(data)
+}
+form -> onSubmit={onSubmitHandler}
+input -> value={data.companyName} 
+        -onChange{(e)=>setData('companyName', e.target.value)}
+
