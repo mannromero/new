@@ -70,5 +70,7 @@ git blame -L 5,15 <file>
 git log -p <commit_id>
 
 FORK
+git remote set-url origin git://new.url.here
+git remote remove origin
 
 git add --all
